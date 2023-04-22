@@ -1,9 +1,10 @@
-import { CardItem } from './CardItem';
+import { CardList } from './CardList';
+import { Container } from './Container';
 
 export const App = () => {
   return (
-    <>
-      <CardItem />
-    </>
+    <Container>
+      <CardList />
+    </Container>
   );
 };
