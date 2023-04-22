@@ -3,11 +3,17 @@ import css from './CardItem.module.css';
 import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
+import { Button } from 'components/Button';
+import { useState } from 'react';
 
 const CardItem = ({ user }) => {
   const { user: username, avatar, tweets, followers } = user;
 
-  const handleClick = () => {};
+  const [selected, setSelected] = useState(true);
+
+  const handleSelect = () => {
+    setSelected(prevSelected => !prevSelected);
+  };
 
   return (
     <div className={css.card}>
@@ -22,14 +28,16 @@ const CardItem = ({ user }) => {
         </div>
       </div>
       <p className={css.text}>
-        <span className={css.number}>{tweets}</span>
+        <span className={css.number}>{numberWithComma(tweets)}</span>
         <span> tweets</span>
       </p>
       <p className={css.text}>
         <span className={css.number}>{numberWithComma(followers)}</span>
         <span> followers</span>
       </p>
-      <button className={css.button}>follow {/*following */}</button>
+      <Button selected={selected} onClick={handleSelect}>
+        {selected ? 'following' : 'follow'}
+      </Button>
     </div>
   );
 };
