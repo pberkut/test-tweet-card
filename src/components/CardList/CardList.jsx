@@ -1,31 +1,15 @@
 import { CardItem } from '../CardItem';
-import css from './Cardlist.module.css';
+import css from './CardList.module.css';
 
-const CardList = () => {
+const CardList = ({ cards }) => {
   return (
     <>
       <ul className={css.list}>
-        <li>
-          <CardItem />
-        </li>
-        <li>
-          <CardItem />
-        </li>
-        <li>
-          <CardItem />
-        </li>
-        <li>
-          <CardItem />
-        </li>
-        <li>
-          <CardItem />
-        </li>
-        <li>
-          <CardItem />
-        </li>
-        <li>
-          <CardItem />
-        </li>
+        {cards.map(card => (
+          <li key={card.id}>
+            <CardItem card={card} />
+          </li>
+        ))}
       </ul>
     </>
   );
