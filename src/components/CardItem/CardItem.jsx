@@ -4,18 +4,20 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 
-const CardItem = ({ card }) => {
-  const { id, user, avatar, tweets, followers } = card;
+const CardItem = ({ user }) => {
+  const { user: username, avatar, tweets, followers } = user;
+
+  const handleClick = () => {};
 
   return (
     <div className={css.card}>
       <img className={css.logo} src={logo} alt="logo" />
-      <img className={css.image} src={image} alt="decoration" />
+      <img src={image} alt="decoration" />
       <div className={css.containerWrapper}>
         <div className={css.rectangle}></div>
         <div className={css.outerCircle}>
           <div className={css.innerCircle}>
-            <img className={css.avatar} src={avatar} alt={user} />
+            <img className={css.avatar} src={avatar} alt={username} />
           </div>
         </div>
       </div>
@@ -37,7 +39,7 @@ CardItem.propTypes = {
     id: PropTypes.string.isRequired,
     user: PropTypes.string.isRequired,
     tweets: PropTypes.number.isRequired,
-    followers: PropTypes.string.isRequired,
+    followers: PropTypes.number.isRequired,
     avatar: PropTypes.string.isRequired,
   }),
 };

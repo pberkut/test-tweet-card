@@ -26,8 +26,6 @@
   left: 20px;
 }
 
-.image {}
-
 .containerWrapper {
   position: relative;
   top: -18px;
@@ -110,5 +108,5 @@
 }
 
 .button:hover {
-  background-color: #EBD0FF;
+  background-color: #d399ff;
 }
