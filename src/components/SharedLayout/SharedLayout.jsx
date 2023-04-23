@@ -10,7 +10,7 @@ export function SharedLayout() {
       <header>
         <nav>
           <NavLink to="/" end>
-            Home1
+            Home
           </NavLink>
           <NavLink to="/tweets">Tweets</NavLink>
         </nav>
