@@ -5,7 +5,7 @@ import { Loader } from 'components/Loader';
 import { useEffect, useState } from 'react';
 import { fetchUsers } from 'services/mockAPI';
 
-export default function Tweets() {
+function Tweets() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -47,3 +47,5 @@ export default function Tweets() {
     </>
   );
 }
+
+export default Tweets;

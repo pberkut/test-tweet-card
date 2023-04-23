@@ -1,6 +1,6 @@
 import styles from './Home.module.css';
 
-export default function Home() {
+function Home() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
@@ -12,3 +12,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;
