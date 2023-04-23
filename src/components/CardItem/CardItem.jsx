@@ -10,21 +10,25 @@ import { updateUser } from 'services/mockAPI';
 
 const CardItem = ({ user }) => {
   const { id, user: username, avatar, tweets, followers } = user;
-
+  const [newFollower, setNewFollower] = useState(followers);
   const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
 
   const handleFollowClick = () => {
     const { id, followers } = user;
 
+    // setSelected(prevState => !prevState);
+
     if (!selected) {
       setSelected(true);
+      setNewFollower(prevState => prevState - 1);
     } else {
       setSelected(false);
+      setNewFollower(prevState => prevState + 1);
     }
 
     const updateData = async () => {
       try {
-        await updateUser(id, followers);
+        await updateUser(id, newFollower);
       } catch (error) {
         console.log(error);
       }
@@ -68,7 +72,7 @@ const CardItem = ({ user }) => {
         <span> tweets</span>
       </p>
       <p className={css.text}>
-        <span className={css.number}>{numberWithComma(followers)}</span>
+        <span className={css.number}>{numberWithComma(newFollower)}</span>
         <span> followers</span>
       </p>
       <Button selected={selected} onClick={handleFollowClick}>
