@@ -4,7 +4,7 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 import { Button } from '../Button';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { updateUser } from '../../services/mockAPI';
 
@@ -12,6 +12,7 @@ const CardItem = ({ user }) => {
   const { id, user: username, avatar, tweets, followers } = user;
   const [newFollower, setNewFollower] = useState(followers);
   const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     const updateData = async () => {
@@ -21,6 +22,11 @@ const CardItem = ({ user }) => {
         console.log(error);
       }
     };
+
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
     updateData();
   }, [id, newFollower]);
