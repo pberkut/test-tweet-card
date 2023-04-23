@@ -1,49 +1,19 @@
-import { useEffect, useState } from 'react';
-import { CardList } from './CardList';
-import { Container } from './Container';
-import { fetchUsers, updateUser } from 'services/mockAPI';
-import { Button } from './Button';
-import { Loader } from './Loader';
+import { Suspense, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+
+const HomePage = lazy(() => import('pages/Home/Home'));
+const TweetsPage = lazy(() => import('pages/Tweets'));
 
 export const App = () => {
-  const [users, setUsers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    const fetch = async () => {
-      setIsLoading(true);
-
-      try {
-        const newUsers = await fetchUsers(page);
-        setUsers(prevUsers => [...prevUsers, ...newUsers]);
-      } catch (error) {
-        setError(error);
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetch();
-  }, [page]);
-
-  const handleLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
-  };
-
   return (
-    <>
-      <Container>
-        {!error ? <CardList users={users} /> : <p>{error.message}</p>}
-      </Container>
-      <Container>
-        <Button onClick={handleLoadMore}>
-          {isLoading ? <Loader /> : 'Load more'}
-        </Button>
-      </Container>
-    </>
+    <Suspense fallback={<p>Loading...</p>}>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/tweets" element={<TweetsPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };

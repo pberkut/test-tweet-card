@@ -4,7 +4,7 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 import { Button } from 'components/Button';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { updateUser } from 'services/mockAPI';
 

@@ -4,9 +4,12 @@ import { App } from 'components/App';
 import './index.css';
 
 import 'modern-normalize';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
-  <App />
+  <BrowserRouter basename="/test-tweet-card">
+    <App />
+  </BrowserRouter>
   // </React.StrictMode>
 );
