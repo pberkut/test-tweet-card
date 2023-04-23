@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CardList } from './CardList';
 import { Container } from './Container';
-import { fetchUsers } from 'services/mockAPI';
+import { fetchUsers, updateUser } from 'services/mockAPI';
 import { Button } from './Button';
 import { Loader } from './Loader';
 
@@ -29,8 +29,6 @@ export const App = () => {
 
     fetch();
   }, [page]);
-
-  const handleFollow = () => {};
 
   const handleLoadMore = () => {
     setPage(prevPage => prevPage + 1);

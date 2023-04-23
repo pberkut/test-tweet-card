@@ -4,16 +4,52 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 import { Button } from 'components/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocalStorage } from 'hooks/useLocalStorage';
+import { updateUser } from 'services/mockAPI';
 
 const CardItem = ({ user }) => {
-  const { user: username, avatar, tweets, followers } = user;
+  const { id, user: username, avatar, tweets, followers } = user;
 
-  const [selected, setSelected] = useState(true);
+  const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
 
-  const handleSelect = () => {
-    setSelected(prevSelected => !prevSelected);
+  const handleFollowClick = () => {
+    const { id, followers } = user;
+
+    if (!selected) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+
+    const updateData = async () => {
+      try {
+        await updateUser(id, followers);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    updateData();
   };
+
+  // const handleSelect = () => {
+  //   // setSelectedObj(p => !p);
+  //   // const selectedUser = {
+  //   //   userId: user.id,
+  //   //   selected: selectedObj,
+  //   // };
+
+  //   // setSelected(selectedUser);
+
+  //   // setSelected(prevSelected => !prevSelected);
+  //   // const { id } = user;
+
+  //   // setSelected(prevState =>
+  //   //   prevState.map(user => ({ userId: user.id, selected: !selected }))
+  //   // );
+  //   console.log(selected);
+  // };
 
   return (
     <div className={css.card}>
@@ -35,7 +71,7 @@ const CardItem = ({ user }) => {
         <span className={css.number}>{numberWithComma(followers)}</span>
         <span> followers</span>
       </p>
-      <Button selected={selected} onClick={handleSelect}>
+      <Button selected={selected} onClick={handleFollowClick}>
         {selected ? 'following' : 'follow'}
       </Button>
     </div>

@@ -10,9 +10,9 @@ const fetchUsers = async (page = 1) => {
   return data;
 };
 
-const updateUser = async user => {
-  const response = await axios.put(`/users/${user.id}`, {
-    followers: user.followers,
+const updateUser = async (id, followers) => {
+  const response = await axios.put(`/users/${id}`, {
+    followers,
   });
   return response.data;
 };
