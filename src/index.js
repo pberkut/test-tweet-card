@@ -7,9 +7,9 @@ import 'modern-normalize';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter basename="/test-tweet-card">
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <BrowserRouter basename="/test-tweet-card">
+    <App />
+  </BrowserRouter>
+  // </React.StrictMode>
 );
