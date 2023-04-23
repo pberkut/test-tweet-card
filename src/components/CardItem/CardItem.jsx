@@ -14,7 +14,8 @@ const CardItem = ({ user }) => {
   const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
 
   const handleFollowClick = () => {
-    const { id, followers } = user;
+    // const { id, followers } = user;
+    const { id } = user;
 
     // setSelected(prevState => !prevState);
 
