@@ -1,9 +1,9 @@
-import { Button } from 'components/Button';
-import { CardList } from 'components/CardList';
-import { Container } from 'components/Container';
-import { Loader } from 'components/Loader';
+import { Button } from '../../components/Button';
+import { CardList } from '../../components/CardList';
+import { Container } from '../../components/Container';
+import { Loader } from '../../components/Loader';
 import { useEffect, useState } from 'react';
-import { fetchUsers } from 'services/mockAPI';
+import { fetchUsers } from '../../services/mockAPI';
 
 function Tweets() {
   const [users, setUsers] = useState([]);

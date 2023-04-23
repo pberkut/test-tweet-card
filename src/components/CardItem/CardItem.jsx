@@ -3,10 +3,10 @@ import css from './CardItem.module.css';
 import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
-import { Button } from 'components/Button';
+import { Button } from '../Button';
 import { useEffect, useState } from 'react';
-import { useLocalStorage } from 'hooks/useLocalStorage';
-import { updateUser } from 'services/mockAPI';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { updateUser } from '../../services/mockAPI';
 
 const CardItem = ({ user }) => {
   const { id, user: username, avatar, tweets, followers } = user;

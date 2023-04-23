@@ -36,3 +36,10 @@ export const Rectangle = styled.div`
     inset 0px -1.71846px 3.43693px #ae7be3, inset 0px 3.43693px 2.5777px #fbf8ff;
   background-color: #ebd0ff;
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+`;

@@ -1,10 +1,10 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { SharedLayout } from './SharedLayout/SharedLayout';
+import { SharedLayout } from './SharedLayout';
 
-const HomePage = lazy(() => import('pages/Home'));
-const TweetsPage = lazy(() => import('pages/Tweets'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const HomePage = lazy(() => import('../pages/Home'));
+const TweetsPage = lazy(() => import('../pages/Tweets'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
   return (
