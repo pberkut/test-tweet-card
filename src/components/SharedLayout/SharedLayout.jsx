@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Container, NavLink } from './SharedLayuot.styled';
+import { Container, NavLink, Rectangle } from './SharedLayout.styled';
+import { Loader } from 'components/Loader';
+import { Wrapper } from 'pages/NotFoundPage/NotFoundPage.styled';
 
 export function SharedLayout() {
   return (
@@ -12,9 +14,16 @@ export function SharedLayout() {
           </NavLink>
           <NavLink to="/tweets">Tweets</NavLink>
         </nav>
+        <Rectangle />
       </header>
       <main>
-        <Suspense fallback={<div>Loading page...</div>}>
+        <Suspense
+          fallback={
+            <Wrapper>
+              <Loader />
+            </Wrapper>
+          }
+        >
           <Outlet />
         </Suspense>
       </main>

@@ -4,7 +4,7 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 import { Button } from 'components/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { updateUser } from 'services/mockAPI';
 
@@ -13,20 +13,7 @@ const CardItem = ({ user }) => {
   const [newFollower, setNewFollower] = useState(followers);
   const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
 
-  const handleFollowClick = () => {
-    // const { id, followers } = user;
-    const { id } = user;
-
-    // setSelected(prevState => !prevState);
-
-    if (!selected) {
-      setSelected(true);
-      setNewFollower(prevState => prevState - 1);
-    } else {
-      setSelected(false);
-      setNewFollower(prevState => prevState + 1);
-    }
-
+  useEffect(() => {
     const updateData = async () => {
       try {
         await updateUser(id, newFollower);
@@ -36,25 +23,17 @@ const CardItem = ({ user }) => {
     };
 
     updateData();
+  }, [id, newFollower]);
+
+  const handleFollowClick = () => {
+    if (!selected) {
+      setSelected(true);
+      setNewFollower(prevState => prevState + 1);
+    } else {
+      setSelected(false);
+      setNewFollower(prevState => prevState - 1);
+    }
   };
-
-  // const handleSelect = () => {
-  //   // setSelectedObj(p => !p);
-  //   // const selectedUser = {
-  //   //   userId: user.id,
-  //   //   selected: selectedObj,
-  //   // };
-
-  //   // setSelected(selectedUser);
-
-  //   // setSelected(prevSelected => !prevSelected);
-  //   // const { id } = user;
-
-  //   // setSelected(prevState =>
-  //   //   prevState.map(user => ({ userId: user.id, selected: !selected }))
-  //   // );
-  //   console.log(selected);
-  // };
 
   return (
     <div className={css.card}>
