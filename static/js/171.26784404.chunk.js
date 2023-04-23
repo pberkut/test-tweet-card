@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_tweet_card=self.webpackChunktest_tweet_card||[]).push([[171],{2171:function(e,t,a){a.r(t),a.d(t,{default:function(){return c}});var n="Home_container__w+u63",r="Home_title__L087v",s=a(184);var c=function(){return(0,s.jsx)("div",{className:n,children:(0,s.jsxs)("h1",{className:r,children:["Tweets manager welcome page"," ",(0,s.jsx)("span",{role:"img","aria-label":"Greeting icon",children:"\ud83d\udc81\u200d\u2640\ufe0f"})]})})}}}]);
+//# sourceMappingURL=171.26784404.chunk.js.map
