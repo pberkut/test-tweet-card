@@ -8,8 +8,16 @@ import { fetchAllUsers, fetchUsers, updateUser } from '../../services/mockAPI';
 import { statusFilterOptions, statusFilters } from 'utils/constant';
 import { getFilteredUsers } from 'utils/getFilteredUsers';
 import { Dropdown } from 'components/DropDownMenu/DropDownMenu';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Tweets() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    navigate(location?.state?.from ?? '/');
+  };
+
   const [users, setUsers] = useState([]);
   const [allUsersLength, setAllUsersLength] = useState(0);
 
@@ -114,6 +122,9 @@ function Tweets() {
   return (
     <>
       <Container>
+        <Button type="button" onClick={handleGoBack}>
+          ⬅️ Go back
+        </Button>
         <Dropdown
           options={statusFilterOptions}
           value={filter}
