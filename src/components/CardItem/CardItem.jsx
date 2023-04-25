@@ -8,8 +8,10 @@ import { useState } from 'react';
 
 const CardItem = ({ twiUser, handleFollowClick }) => {
   const { followers, user, tweets, avatar, isFollowed } = twiUser;
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
+    setIsLoading(true);
     const updatedUser = {
       ...twiUser,
       followers: isFollowed ? followers - 1 : followers + 1,
@@ -20,6 +22,8 @@ const CardItem = ({ twiUser, handleFollowClick }) => {
       await handleFollowClick(updatedUser);
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -43,7 +47,12 @@ const CardItem = ({ twiUser, handleFollowClick }) => {
         <span className={css.number}>{numberWithComma(followers)}</span>
         <span> followers</span>
       </p>
-      <Button onClick={handleClick} name="follow" isFollowing={isFollowed}>
+      <Button
+        onClick={handleClick}
+        name="follow"
+        isFollowing={isFollowed}
+        disabled={isLoading}
+      >
         {isFollowed ? 'following' : 'follow'}
       </Button>
     </div>

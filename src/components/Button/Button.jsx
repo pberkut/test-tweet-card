@@ -1,17 +1,11 @@
 import clsx from 'clsx';
 import css from './Button.module.css';
 
-const Button = ({
-  selected = false,
-  upBtn = false,
-  loadMoreBtn = false,
-  children,
-  ...otherProps
-}) => {
+const Button = ({ isFollowing = false, children, ...otherProps }) => {
   return (
     <button
       className={clsx(css.button, {
-        [css.isFollowing]: selected,
+        [css.isFollowing]: isFollowing,
       })}
       type="button"
       {...otherProps}
