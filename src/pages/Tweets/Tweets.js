@@ -115,9 +115,8 @@ function Tweets() {
             {isLoading ? <Loader /> : 'Load more'}
           </Button>
         ) : (
-          <Button onClick={handleToUp}>⬆️UP⬆️</Button>
+          !isLoading && <Button onClick={handleToUp}>⬆️UP⬆️</Button>
         )}
-        {/* {!availablePagination && } */}
       </Container>
     </>
   );

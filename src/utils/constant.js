@@ -10,4 +10,4 @@ const statusFilterOptions = [
   { label: 'Not Followed', value: statusFilters.notFollowed },
 ];
 
-export { statusFilters, statusFilterOptions };
+export { statusFilterOptions, statusFilters };

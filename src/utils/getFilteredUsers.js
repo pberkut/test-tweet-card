@@ -1,4 +1,4 @@
-import { statusFilters } from './constants';
+import { statusFilters } from './constant';
 
 const getFilteredUsers = (users, statusFilter) => {
   switch (statusFilter) {
