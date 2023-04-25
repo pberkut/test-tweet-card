@@ -18,9 +18,7 @@ const fetchUsers = async (page = 1) => {
 };
 
 const updateUser = async (id, followers) => {
-  const response = await axios.put(`/users/${id}`, {
-    followers,
-  });
+  const response = await axios.put(`/users/${id}`);
   return response.data;
 };
 

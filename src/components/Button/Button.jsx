@@ -11,7 +11,7 @@ const Button = ({
   return (
     <button
       className={clsx(css.button, {
-        [css.isSelected]: selected,
+        [css.isFollowing]: selected,
       })}
       type="button"
       {...otherProps}

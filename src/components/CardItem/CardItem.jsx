@@ -4,68 +4,23 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 import { Button } from '../Button';
-import { useEffect, useRef, useState } from 'react';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { updateUser } from '../../services/mockAPI';
+import { useState } from 'react';
 
-const CardItem = ({ user }) => {
-  const { id, user: username, avatar, tweets, followers } = user;
-  const [newFollower, setNewFollower] = useState(followers);
-  const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
-  const isFirstRender = useRef(true);
+const CardItem = ({ twiUser, handleFollowClick }) => {
+  const { followers, user, tweets, avatar, isFollowed } = twiUser;
 
-  // const [state, setState] = useState(() =>
-  //   JSON.parse(window.localStorage.getItem('users'))
-  // );
-
-  // useEffect(() => {
-  //   console.log(state);
-  // }, [state]);
-
-  useEffect(() => {
-    const updateData = async () => {
-      try {
-        await updateUser(id, newFollower);
-      } catch (error) {
-        console.log(error);
-      }
+  const handleClick = async () => {
+    const updatedUser = {
+      ...twiUser,
+      followers: isFollowed ? followers - 1 : followers + 1,
+      isFollowed: !isFollowed,
     };
 
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
+    try {
+      await handleFollowClick(updatedUser);
+    } catch (error) {
+      console.log(error);
     }
-
-    updateData();
-  }, [id, newFollower]);
-
-  const handleFollowClick = () => {
-    if (!selected) {
-      setSelected(true);
-      setNewFollower(prevState => prevState + 1);
-    } else {
-      setSelected(false);
-      setNewFollower(prevState => prevState - 1);
-    }
-    // setState(pS =>
-    //   pS.map(user =>
-    //     user.id == id
-    //       ? {
-    //           ...user,
-    //           selected: true,
-    //         }
-    //       : user
-    //   )
-    // );
-
-    // if(state.includes())
-    // console.log(state.users.includes('users'));
-
-    // setState(prevState => {
-    //   console.log(prevState);
-    //   return prevState;
-    // });
-    // console.log(state);
   };
 
   return (
@@ -76,7 +31,7 @@ const CardItem = ({ user }) => {
         <div className={css.rectangle}></div>
         <div className={css.outerCircle}>
           <div className={css.innerCircle}>
-            <img className={css.avatar} src={avatar} alt={username} />
+            <img className={css.avatar} src={avatar} alt={user} />
           </div>
         </div>
       </div>
@@ -85,11 +40,11 @@ const CardItem = ({ user }) => {
         <span> tweets</span>
       </p>
       <p className={css.text}>
-        <span className={css.number}>{numberWithComma(newFollower)}</span>
+        <span className={css.number}>{numberWithComma(followers)}</span>
         <span> followers</span>
       </p>
-      <Button selected={selected} onClick={handleFollowClick}>
-        {selected ? 'following' : 'follow'}
+      <Button onClick={handleClick} name="follow" isFollowing={isFollowed}>
+        {isFollowed ? 'following' : 'follow'}
       </Button>
     </div>
   );

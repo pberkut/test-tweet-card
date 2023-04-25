@@ -3,7 +3,7 @@ import { CardList } from '../../components/CardList';
 import { Container } from '../../components/Container';
 import { Loader } from '../../components/Loader';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { fetchAllUsers, fetchUsers } from '../../services/mockAPI';
+import { fetchAllUsers, fetchUsers, updateUser } from '../../services/mockAPI';
 
 import { statusFilterOptions, statusFilters } from 'utils/constant';
 import { getFilteredUsers } from 'utils/getFilteredUsers';
@@ -80,6 +80,20 @@ function Tweets() {
     });
   });
 
+  const handleFollowClick = async user => {
+    try {
+      const updatedUser = await updateUser(user);
+      const index = users.findIndex(u => u.id === updatedUser.id);
+      if (index !== -1) {
+        const updatedUsers = [...users];
+        updatedUsers[index] = updatedUser;
+        setUsers(updatedUsers);
+      }
+    } catch (e) {
+      console.log(true);
+    }
+  };
+
   const handleOptionChange = value => {
     setFilter(value);
   };
@@ -107,7 +121,14 @@ function Tweets() {
         />
       </Container>
       <Container>
-        {!error ? <CardList users={visibleUsers} /> : <p>{error.message}</p>}
+        {!error ? (
+          <CardList
+            users={visibleUsers}
+            handleFollowClick={handleFollowClick}
+          />
+        ) : (
+          <p>{error.message}</p>
+        )}
       </Container>
       <Container>
         {showLoadMore ? (
