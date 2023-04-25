@@ -14,6 +14,14 @@ const CardItem = ({ user }) => {
   const [selected, setSelected] = useLocalStorage(`selected-${id}`, false);
   const isFirstRender = useRef(true);
 
+  // const [state, setState] = useState(() =>
+  //   JSON.parse(window.localStorage.getItem('users'))
+  // );
+
+  // useEffect(() => {
+  //   console.log(state);
+  // }, [state]);
+
   useEffect(() => {
     const updateData = async () => {
       try {
@@ -39,6 +47,25 @@ const CardItem = ({ user }) => {
       setSelected(false);
       setNewFollower(prevState => prevState - 1);
     }
+    // setState(pS =>
+    //   pS.map(user =>
+    //     user.id == id
+    //       ? {
+    //           ...user,
+    //           selected: true,
+    //         }
+    //       : user
+    //   )
+    // );
+
+    // if(state.includes())
+    // console.log(state.users.includes('users'));
+
+    // setState(prevState => {
+    //   console.log(prevState);
+    //   return prevState;
+    // });
+    // console.log(state);
   };
 
   return (
