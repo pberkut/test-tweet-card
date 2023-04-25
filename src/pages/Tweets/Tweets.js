@@ -5,7 +5,9 @@ import { Loader } from '../../components/Loader';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { fetchAllUsers, fetchUsers } from '../../services/mockAPI';
 
-import { LIMIT_CARDS } from 'utils/constant';
+import { statusFilterOptions, statusFilters } from 'utils/constant';
+import { getFilteredUsers } from 'utils/getFilteredUsers';
+import { Dropdown } from 'components/DropDownMenu/DropDownMenu';
 
 function Tweets() {
   const [users, setUsers] = useState([]);
@@ -14,10 +16,9 @@ function Tweets() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [selectedOption, setSelectedOption] = useState('Show all');
   const [page, setPage] = useState(1);
-  // const [availablePagination, setAvailablePagination] = useState(true);
   const [showLoadMore, setShowLoadMore] = useState(true);
+  const [filter, setFilter] = useState(statusFilters.all);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,10 +80,8 @@ function Tweets() {
     });
   });
 
-  const handleOptionChange = e => {
-    const option = e.target.value;
-    setSelectedOption(option);
-    console.log(option);
+  const handleOptionChange = value => {
+    setFilter(value);
   };
 
   const handleLoadMore = () => {
@@ -96,16 +95,16 @@ function Tweets() {
     });
   };
 
-  const visibleUsers = getVisibleUsers(users, filter);
+  const visibleUsers = getFilteredUsers(users, filter);
 
   return (
     <>
       <Container>
-        <select value={selectedOption} onChange={handleOptionChange}>
-          <option value="Show all">Show all</option>
-          <option value="Follow">Follow</option>
-          <option value="Followings">Followings</option>
-        </select>
+        <Dropdown
+          options={statusFilterOptions}
+          value={filter}
+          onSelect={handleOptionChange}
+        />
       </Container>
       <Container>
         {!error ? <CardList users={visibleUsers} /> : <p>{error.message}</p>}

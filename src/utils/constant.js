@@ -1,3 +1,13 @@
-const LIMIT_CARDS = 12;
+const statusFilters = {
+  all: 'all',
+  followed: 'followed',
+  notFollowed: 'notFollowed',
+};
 
-export { LIMIT_CARDS };
+const statusFilterOptions = [
+  { label: 'All', value: statusFilters.all },
+  { label: 'Followed', value: statusFilters.followed },
+  { label: 'Not Followed', value: statusFilters.notFollowed },
+];
+
+export { statusFilters, statusFilterOptions };
