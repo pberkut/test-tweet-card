@@ -1,7 +1,7 @@
 <h1 align='center'>TWEET CARDS</h2>
 
 <div align="center">
-<image src="/src/images/screen.jpg" alt="screen" align='center'>
+<image src="/assets/screen.png" alt="screen" align='center'>
 </div>
 
 ## Description
@@ -24,7 +24,7 @@ subscribe to a user or unsubscribe.
 ## Installation <a id="installation"></a>
 
 ```
-git clone https://github.com/Siryi-Oleksandr/tweet-card-test.git
+git clone https://github.com/pberkut/test-tweet-card.git
 cd your-project
 npm install
 npm start
