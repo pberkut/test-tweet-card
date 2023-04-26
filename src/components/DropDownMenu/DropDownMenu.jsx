@@ -36,6 +36,7 @@ const Dropdown = ({ options, value, onSelect }) => {
         <div className={css.wrapper}>
           {options.map(option => (
             <a
+              href="# "
               className={css.option}
               key={option.value}
               onClick={() => handleOptionClick(option.value)}
