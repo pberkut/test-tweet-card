@@ -16,9 +16,11 @@ const CardItem = ({ twiUser, handleFollowClick }) => {
     if (endRef.current) {
       endRef.current.scrollIntoView({
         behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest',
       });
     }
-  });
+  }, [twiUser]);
 
   const handleClick = async () => {
     setIsLoading(true);
@@ -38,7 +40,7 @@ const CardItem = ({ twiUser, handleFollowClick }) => {
   };
 
   return (
-    <div className={css.card}>
+    <div className={css.card} ref={endRef}>
       <img className={css.logo} src={logo} alt="logo" />
       <img src={image} alt="decoration" />
       <div className={css.containerWrapper}>
@@ -65,7 +67,6 @@ const CardItem = ({ twiUser, handleFollowClick }) => {
       >
         {isFollowed ? 'following' : 'follow'}
       </Button>
-      <div ref={endRef}></div>
     </div>
   );
 };
