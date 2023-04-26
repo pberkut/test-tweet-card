@@ -4,11 +4,21 @@ import image from '../../images/image.png';
 import logo from '../../images/logo.svg';
 import { numberWithComma } from '../../utils/numberWithComma';
 import { Button } from '../Button';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const CardItem = ({ twiUser, handleFollowClick }) => {
   const { followers, user, tweets, avatar, isFollowed } = twiUser;
   const [isLoading, setIsLoading] = useState(false);
+
+  const endRef = useRef(null);
+
+  useEffect(() => {
+    if (endRef.current) {
+      endRef.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+  });
 
   const handleClick = async () => {
     setIsLoading(true);
@@ -55,6 +65,7 @@ const CardItem = ({ twiUser, handleFollowClick }) => {
       >
         {isFollowed ? 'following' : 'follow'}
       </Button>
+      <div ref={endRef}></div>
     </div>
   );
 };

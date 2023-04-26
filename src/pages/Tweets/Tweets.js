@@ -2,7 +2,7 @@ import { Button } from '../../components/Button';
 import { CardList } from '../../components/CardList';
 import { Container } from '../../components/Container';
 import { Loader } from '../../components/Loader';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import { fetchAllUsers, fetchUsers, updateUser } from '../../services/mockAPI';
 
 import { statusFilterOptions, statusFilters } from 'utils/constant';
@@ -75,15 +75,15 @@ function Tweets() {
     }
   }, [users.length, allUsersLength]);
 
-  useLayoutEffect(() => {
-    if (page === 1) {
-      return;
-    }
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth',
-    });
-  });
+  // useLayoutEffect(() => {
+  //   if (page === 1) {
+  //     return;
+  //   }
+  //   window.scrollTo({
+  //     top: document.body.scrollHeight,
+  //     behavior: 'smooth',
+  //   });
+  // });
 
   const handleFollowClick = async user => {
     try {

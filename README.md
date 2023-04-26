@@ -19,9 +19,16 @@ subscribe to a user or unsubscribe.
 - library clsx
 - axios
 - REST API
-- mockapi
+- mockAPI
 
-## Project setup
+## Installation <a id="installation"></a>
 
-- npm install
-- npm start
+```
+git clone https://github.com/Siryi-Oleksandr/tweet-card-test.git
+cd your-project
+npm install
+npm start
+
+```
+
+---
