@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/test-tweet-card/static/css/main.b91ecc9b.css",
-    "main.js": "/test-tweet-card/static/js/main.555256aa.js",
+    "main.js": "/test-tweet-card/static/js/main.3279dd92.js",
     "static/css/171.d78aa504.chunk.css": "/test-tweet-card/static/css/171.d78aa504.chunk.css",
     "static/js/171.26784404.chunk.js": "/test-tweet-card/static/js/171.26784404.chunk.js",
     "static/css/397.2a935e32.chunk.css": "/test-tweet-card/static/css/397.2a935e32.chunk.css",
-    "static/js/397.daad7606.chunk.js": "/test-tweet-card/static/js/397.daad7606.chunk.js",
+    "static/js/397.b393f2c4.chunk.js": "/test-tweet-card/static/js/397.b393f2c4.chunk.js",
     "static/js/38.38f34517.chunk.js": "/test-tweet-card/static/js/38.38f34517.chunk.js",
     "static/js/5.4a102774.chunk.js": "/test-tweet-card/static/js/5.4a102774.chunk.js",
     "static/media/image.png": "/test-tweet-card/static/media/image.b3d9942b3f9d5dad1ff0.png",
     "static/media/logo.svg": "/test-tweet-card/static/media/logo.e917114d7945c04c85a8946a331d28b6.svg",
     "index.html": "/test-tweet-card/index.html",
     "main.b91ecc9b.css.map": "/test-tweet-card/static/css/main.b91ecc9b.css.map",
-    "main.555256aa.js.map": "/test-tweet-card/static/js/main.555256aa.js.map",
+    "main.3279dd92.js.map": "/test-tweet-card/static/js/main.3279dd92.js.map",
     "171.d78aa504.chunk.css.map": "/test-tweet-card/static/css/171.d78aa504.chunk.css.map",
     "171.26784404.chunk.js.map": "/test-tweet-card/static/js/171.26784404.chunk.js.map",
     "397.2a935e32.chunk.css.map": "/test-tweet-card/static/css/397.2a935e32.chunk.css.map",
-    "397.daad7606.chunk.js.map": "/test-tweet-card/static/js/397.daad7606.chunk.js.map",
+    "397.b393f2c4.chunk.js.map": "/test-tweet-card/static/js/397.b393f2c4.chunk.js.map",
     "38.38f34517.chunk.js.map": "/test-tweet-card/static/js/38.38f34517.chunk.js.map",
     "5.4a102774.chunk.js.map": "/test-tweet-card/static/js/5.4a102774.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b91ecc9b.css",
-    "static/js/main.555256aa.js"
+    "static/js/main.3279dd92.js"
   ]
 }
