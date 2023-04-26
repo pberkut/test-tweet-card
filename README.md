@@ -16,7 +16,7 @@ subscribe to a user or unsubscribe.
 - react-router-dom
 - styled-components
 - CSS Modules
-- library clsx
+- utility clsx
 - axios
 - REST API
 - mockAPI
