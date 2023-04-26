@@ -7,9 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 
-  background: linear-gradient(-45deg, #ddcbc677, #a2b120bd, #23a5d56b, #38d523a4);
+  background: linear-gradient(-90deg, #ffffffff, #dbdbdbbd, #cecece6b, #b8b8b8a4);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 5s ease infinite;
   height: 100vh;
 }
 

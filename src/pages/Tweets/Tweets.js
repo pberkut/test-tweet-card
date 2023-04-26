@@ -70,7 +70,7 @@ function Tweets() {
   }, [page]);
 
   useEffect(() => {
-    if (users.length >= allUsersLength) {
+    if (users.length === allUsersLength) {
       setShowLoadMore(false);
     }
   }, [users.length, allUsersLength]);
