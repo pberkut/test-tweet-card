@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
 
 import { CardItem } from '../CardItem';
-import styles from './CardList.module.css';
+import css from './CardList.module.css';
+
+const styles = {
+  display: 'flex',
+  gap: '30px',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 const CardList = ({ users, handleFollowClick }) => {
   return (
-    <ul className={styles.list}>
+    <ul className={css.list}>
       {users.map(user => (
         <li key={user.id}>
           <CardItem twiUser={user} handleFollowClick={handleFollowClick} />
