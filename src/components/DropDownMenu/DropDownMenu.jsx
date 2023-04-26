@@ -30,7 +30,9 @@ const Dropdown = ({ options, value, onSelect }) => {
     <div className={css.container} ref={dropdownRef}>
       <button className={css.button} onClick={handleClick}>
         Select users to show:{' '}
-        {options.find(option => option.value === value)?.label}
+        <span className={css.label}>
+          {options.find(option => option.value === value)?.label}
+        </span>
       </button>
       {isOpen && (
         <div className={css.wrapper}>

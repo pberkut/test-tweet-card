@@ -5,13 +5,24 @@
 }
 
 .button {
-  background-color: #471CA9;
-  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: black;
   height: 50px;
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  background-color: #EBD8FF;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+  outline: 1px solid #e84a5f;
 }
 
 .wrapper {
@@ -34,4 +45,8 @@
 
 .option:hover {
   background-color: #5CD3A8;
+}
+
+.label {
+  font-weight: 900;
 }
