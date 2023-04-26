@@ -51,13 +51,10 @@ function Tweets() {
         if (page === 1) {
           setIsLoading(true);
         }
-
         const users = await fetchUsers(page);
-
         if (page === 1) {
           setUsers([...users]);
           setShowLoadMore(true);
-
           return;
         }
         setUsers(prev => [...prev, ...users]);
